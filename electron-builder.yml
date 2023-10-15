@@ -2,6 +2,8 @@ appId: com.example.app
 copyright: Example co
 productName: MyApp
 
+nodeGypRebuild: true
+
 asar: true
 
 directories:

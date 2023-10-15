@@ -5,6 +5,9 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createMemoryHistory } from 'history';
 import routes from './routes';
 import configureStore from './store';
+import testAddon from '../../cppsrc/build/Release/testaddon';
+
+console.log(testAddon.hello());
 
 const syncHistoryWithStore = (store, history) => {
   const { router } = store.getState();

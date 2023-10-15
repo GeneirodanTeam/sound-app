@@ -1,18 +1,21 @@
 {
-  "name": "electron-react-redux-boilerplate",
+  "name": "sound-app",
   "version": "0.0.0",
-  "description": "electron-react-redux-boilerplate",
+  "description": "",
   "main": "init.js",
+  "gypfile": true,
   "author": {
     "name": "Jordan Schroter",
     "email": "email@author.com"
   },
-  "repository": "https://github.com/jschr/electron-react-redux-boilerplate",
+  "repository": "",
   "license": "MIT",
   "dependencies": {
     "@babel/register": "^7.9.0",
     "connected-react-router": "^6.8.0",
     "history": "^4.10.1",
+    "node-addon-api": "^7.0.0",
+    "node-gyp": "^9.4.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.0",
@@ -57,6 +60,8 @@
     "pack:mac": "gulp pack-mac",
     "pack:win": "gulp pack-win",
     "pack:linux": "gulp pack-linux",
-    "private:format": "prettier gulpfile.js babel.config.js \"tasks/*.js\" \"app/**/*.js\" \"test/**/*.js\""
+    "private:format": "prettier gulpfile.js babel.config.js \"tasks/*.js\" \"app/**/*.js\" \"test/**/*.js\"",
+    "build_ext": "node-gyp rebuild --directory=\"cppsrc\"",
+    "clean_ext": "node-gyp clean"
   }
 }
