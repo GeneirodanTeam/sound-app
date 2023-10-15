@@ -5,9 +5,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import { createMemoryHistory } from 'history';
 import routes from './routes';
 import configureStore from './store';
-import testAddon from '../../cppsrc/build/Release/testaddon';
+import subsystem from '../../cppsrc/build/Release/sound-subsystem';
 
-console.log(testAddon.hello());
 
 const syncHistoryWithStore = (store, history) => {
   const { router } = store.getState();
@@ -29,3 +28,6 @@ ReactDOM.render(
   </Provider>,
   rootElement,
 );
+
+const classInstance = new subsystem.ClassExample();
+classInstance.open("C:\\Sample.wav")
