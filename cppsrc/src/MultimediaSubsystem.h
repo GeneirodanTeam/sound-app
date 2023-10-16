@@ -5,17 +5,53 @@
 
 class MultimediaSubsystem
 {
-    LPDIRECTSOUND8 _lpDirectSound;
-    WAVEFORMATEX _waveFormat = {};
+    LPDIRECTSOUND8 _lpDirectSound = nullptr;
     LPDIRECTSOUNDBUFFER8 _soundBuffer = nullptr;
+    LPDIRECTSOUND3DBUFFER8 _soundBuffer3D = nullptr;
+    LPDIRECTSOUND3DLISTENER8 _listener = nullptr;
+    WAVEFORMATEX _waveFormat = {};
     char* _soundData = nullptr;
     long _soundDataLength = 0;
 
-public:
-    MultimediaSubsystem();
-
-    void open(LPTSTR fileName);
+    static HRESULT earlyClose(HMMIO handle);
     HRESULT createBasicBuffer(DWORD dwBufferBytes);
-    bool appWriteDataToBuffer() const;
-    bool play() const;
+    HRESULT appWriteDataToBuffer() const;
+    HRESULT getListener();
+
+public:
+    HRESULT create();
+    HRESULT open(LPTSTR fileName);
+    HRESULT play() const;
+    HRESULT stop() const;
+
+    WAVEFORMATEX getWaveFormat() const;
+
+    D3DVALUE getDopplerFactor() const;
+
+    // D3DVALUE getConeAngles() const;
+    // D3DVALUE getConeOrientation() const;
+    // D3DVALUE getConeOutsideVolume() const;
+
+    D3DVALUE getMinDistance() const;
+    D3DVALUE getMaxDistance() const;
+    D3DVECTOR getPosition() const;
+    D3DVECTOR getVelocity() const;
+
+    LONG getVolume() const;
+    DWORD getFrequency() const;
+
+    HRESULT setDopplerFactor(D3DVALUE value) const;
+
+    // D3DVALUE setConeAngles() const;
+    // D3DVALUE setConeOrientation() const ;
+    // D3DVALUE setConeOutsideVolume() const ;
+
+    HRESULT setMinDistance(D3DVALUE value) const;
+    HRESULT setMaxDistance(D3DVALUE value) const;
+    HRESULT setPosition(D3DVECTOR value) const;
+    HRESULT setVelocity(D3DVECTOR value) const;
+
+    
+    HRESULT setVolume(float value) const;
+    HRESULT setFrequency(DWORD value) const;
 };
