@@ -7,7 +7,7 @@
 
 
 Napi::Object initAll(const Napi::Env env, const Napi::Object exports) {
-    return ClassExample::init(env, exports);
+    return MultimediaApi::init(env, exports);
 }
 
 NODE_API_MODULE(NODE_GYP_MODULE_NAME, initAll)
