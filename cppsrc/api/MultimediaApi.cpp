@@ -66,7 +66,7 @@ Napi::Value MultimediaApi::create(const Napi::CallbackInfo& info)
     const Napi::Env env = info.Env();
     Napi::HandleScope scope(env);
 
-    long answer = this->_actualClass->create();
+    const long answer = this->_actualClass->create();
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -75,7 +75,7 @@ Napi::Value MultimediaApi::play(const Napi::CallbackInfo& info)
     const Napi::Env env = info.Env();
     Napi::HandleScope scope(env);
 
-    long answer = this->_actualClass->play();
+    const long answer = this->_actualClass->play();
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -84,7 +84,7 @@ Napi::Value MultimediaApi::stop(const Napi::CallbackInfo& info)
     const Napi::Env env = info.Env();
     Napi::HandleScope scope(env);
 
-    long answer = this->_actualClass->stop();
+    const long answer = this->_actualClass->stop();
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -93,7 +93,7 @@ Napi::Value MultimediaApi::getDopplerFactor(const Napi::CallbackInfo& info)
     const Napi::Env env = info.Env();
     Napi::HandleScope scope(env);
 
-    long answer = this->_actualClass->getDopplerFactor();
+    const float answer = this->_actualClass->getDopplerFactor();
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -102,7 +102,7 @@ Napi::Value MultimediaApi::getMinDistance(const Napi::CallbackInfo& info)
     const Napi::Env env = info.Env();
     Napi::HandleScope scope(env);
 
-    long answer = this->_actualClass->getMinDistance();
+    const float answer = this->_actualClass->getMinDistance();
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -111,7 +111,7 @@ Napi::Value MultimediaApi::getMaxDistance(const Napi::CallbackInfo& info)
     const Napi::Env env = info.Env();
     Napi::HandleScope scope(env);
 
-    long answer = this->_actualClass->getMaxDistance();
+    const float answer = this->_actualClass->getMaxDistance();
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -209,7 +209,7 @@ Napi::Value MultimediaApi::setFrequency(const Napi::CallbackInfo& info)
 
     const auto num = info[0].As<Napi::Number>(); 
 
-    long answer = this->_actualClass->setFrequency(num.FloatValue());
+    long answer = this->_actualClass->setFrequency(num.Int64Value());
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -281,7 +281,7 @@ Napi::Value MultimediaApi::getWaveFormat(const Napi::CallbackInfo& info)
     Napi::HandleScope scope(env);
 
     const auto format = this->_actualClass->getWaveFormat();
-    auto arr = Napi::Float32Array::New(info.Env(), 5);
+    auto arr = Napi::Uint32Array::New(info.Env(), 5);
     arr[0] = format.nChannels;
     arr[1] = format.nSamplesPerSec;
     arr[2] = format.nAvgBytesPerSec;
