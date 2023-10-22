@@ -58,7 +58,8 @@ Napi::Value MultimediaApi::open(const Napi::CallbackInfo& info)
 #else
     const auto string = toAdd.Utf8Value();
 #endif
-    this->_actualClass->open(const_cast<LPTSTR>(string.c_str()));
+    const auto answer = this->_actualClass->open(const_cast<LPTSTR>(string.c_str()));
+    return Napi::Number::New(info.Env(), answer);
 }
 
 Napi::Value MultimediaApi::create(const Napi::CallbackInfo& info)
