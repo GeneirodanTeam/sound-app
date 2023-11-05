@@ -1,0 +1,4 @@
+C:\Source\sound-app\src\cpp\main.cpp;C:\Source\sound-app\src\cpp\build\Release\obj\sound-subsystem\main.obj
+C:\Source\sound-app\src\cpp\src\MultimediaSubsystem.cpp;C:\Source\sound-app\src\cpp\build\Release\obj\sound-subsystem\src\MultimediaSubsystem.obj
+C:\Source\sound-app\src\cpp\api\MultimediaApi.cpp;C:\Source\sound-app\src\cpp\build\Release\obj\sound-subsystem\api\MultimediaApi.obj
+C:\Source\sound-app\node_modules\node-gyp\src\win_delay_load_hook.cc;C:\Source\sound-app\src\cpp\build\Release\obj\sound-subsystem\win_delay_load_hook.obj

@@ -1,67 +1,69 @@
 {
-  "name": "sound-app",
-  "version": "0.0.0",
-  "description": "",
-  "main": "init.js",
-  "gypfile": true,
-  "author": {
-    "name": "Jordan Schroter",
-    "email": "email@author.com"
-  },
-  "repository": "",
-  "license": "MIT",
-  "dependencies": {
-    "@babel/register": "^7.9.0",
-    "connected-react-router": "^6.8.0",
-    "history": "^4.10.1",
-    "node-addon-api": "^7.0.0",
-    "node-gyp": "^9.4.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.0",
-    "react-redux": "^7.2.0",
-    "react-router": "^5.1.2",
-    "redux": "^4.0.5",
-    "redux-actions": "^2.6.5",
-    "redux-localstorage": "^0.4.1",
-    "redux-thunk": "^2.2.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-decorators": "^7.8.3",
-    "@babel/preset-env": "^7.9.5",
-    "@babel/preset-react": "^7.9.4",
-    "babel-eslint": "^10.1.0",
-    "browser-sync": "^2.26.7",
-    "chai": "^4.1.0",
-    "electron": "^9.4.0",
-    "electron-builder": "^22.4.1",
-    "electron-devtools-installer": "^3.0.0",
-    "electron-mocha": "^8.2.1",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-react": "^7.19.0",
-    "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-inject-string": "^1.1.2",
-    "gulp-sourcemaps": "^2.6.5",
-    "prettier": "^2.0.4",
-    "redux-mock-store": "^1.5.4",
-    "rimraf": "^3.0.2"
-  },
-  "scripts": {
-    "postinstall": "electron-builder install-app-deps",
-    "develop": "gulp develop",
-    "test": "electron-mocha --renderer -R spec --require @babel/register test/**/*.spec.js",
-    "lint": "eslint --no-ignore tasks app test *.js",
-    "format": "npm run private:format -- --write",
-    "check-format": "npm run private:format -- --list-different",
-    "pack:mac": "gulp pack-mac",
-    "pack:win": "gulp pack-win",
-    "pack:linux": "gulp pack-linux",
-    "private:format": "prettier gulpfile.js babel.config.js \"tasks/*.js\" \"app/**/*.js\" \"test/**/*.js\"",
-    "build_ext": "node-gyp rebuild --directory=\"cppsrc\"",
-    "clean_ext": "node-gyp clean"
-  }
+	"name": "sound-app",
+	"version": "1.0.1",
+	"private": true,
+	"devDependencies": {
+		"autoprefixer": "^10.4.13",
+		"concurrently": "^8.0.1",
+		"cross-env": "^7.0.3",
+		"electron": "^22.0.0",
+		"electron-builder": "^23.6.0",
+		"node-gyp": "^9.4.0",
+		"postcss": "^8.4.19",
+		"prettier": "^2.8.0",
+		"react-scripts": "^5.0.1",
+		"rimraf": "^3.0.2",
+		"tailwindcss": "3.2.4",
+		"taze": "^0.8.4",
+		"typescript": "^4.9.3",
+		"wait-on": "^6.0.1"
+	},
+	"dependencies": {
+		"auto-launch": "^5.0.5",
+		"electron-is-dev": "^2.0.0",
+		"electron-reloader": "^1.2.3",
+		"electron-updater": "^5.3.0",
+		"node-addon-api": "^7.0.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-icons": "^4.7.1",
+		"react-router-dom": "^6.4.4",
+		"react-toastify": "^9.1.1",
+		"react-use": "^17.4.0"
+	},
+	"homepage": "./",
+	"main": "public/electron.js",
+	"scripts": {
+		"dev": "concurrently \"npm run react:dev\" \"npm run electron:wait\"",
+		"electron:wait": "wait-on tcp:3000 && npm run electron:dev",
+		"prebuild": "rimraf build && rimraf dist",
+		"react:build": "react-scripts build",
+		"react:dev": "cross-env BROWSER=none react-scripts start",
+		"electron:build": "electron-builder build --win --publish never",
+		"electron:deploy": "electron-builder build --win --publish always",
+		"electron:dev": "electron .",
+		"build": "npm run react:build && npm run electron:build",
+		"deploy": "npm run react:build && npm run electron:deploy",
+		"format": "prettier --write .",
+		"update": "taze latest -w",
+		"build_ext": "node-gyp rebuild --directory=\"src/cpp\"",
+		"clean_ext": "node-gyp clean"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }

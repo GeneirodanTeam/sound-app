@@ -1,74 +1,25 @@
-# electron-react-redux-boilerplate
-[![Build Status](https://api.travis-ci.org/jschr/electron-react-redux-boilerplate.svg)](https://travis-ci.org/jschr/electron-react-redux-boilerplate)
-[![dependencies Status](https://david-dm.org/jschr/electron-react-redux-boilerplate/status.svg)](https://david-dm.org/jschr/electron-react-redux-boilerplate)
-[![devDependencies Status](https://david-dm.org/jschr/electron-react-redux-boilerplate/dev-status.svg)](https://david-dm.org/jschr/electron-react-redux-boilerplate?type=dev)
+# ⚛ Electron - React - TailwindCSS Template With Router
 
-A minimal boilerplate to get started with [Electron](http://electron.atom.io/), [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org/).
+A very simple and functional template for you to use Electron, React and TailwindCSS together.
 
-Including:
+# 🎀 Features
 
-* [React Router](https://reacttraining.com/react-router/)
-* [Redux Thunk](https://github.com/gaearon/redux-thunk/)
-* [Redux Actions](https://github.com/acdlite/redux-actions/)
-* [Redux Local Storage](https://github.com/elgerlambert/redux-localstorage/)
-* [Electron Packager](https://github.com/electron-userland/electron-packager)
-* [Electron DevTools Installer](https://github.com/MarshallOfSound/electron-devtools-installer)
-* [Electron Mocha](https://github.com/jprichardson/electron-mocha)
-* [Browsersync](https://browsersync.io/)
+-   Use React for creating interfaces
+-   Use `react-router-dom` for routing
+-   Use TailwindCSS for styling
+-   Basic functions are ready to use such as creating tray icon, creating notifications etc.
 
-## Quick start
+# 🤓 Insatllation
 
-Clone the repository
-```bash
-git clone --depth=1 https://github.com/jschr/electron-react-redux-boilerplate
-```
+-   Clone repo
+-   Run `npm install` or `yarn`
+-   Run `npm run dev` or `yarn dev` to start development server
+-   Run `npm run build` or `yarn build` to create executable
 
-Install dependencies
-```bash
-cd electron-react-redux-boilerplate
-npm install
-```
+# 🧦 Contributing
 
-Development
-```bash
-npm run develop
-```
+Feel free to use GitHub's features.
 
-## DevTools
+# 📄 Copyrights
 
-Toggle DevTools:
-
-* macOS: <kbd>Cmd</kbd> <kbd>Alt</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
-* Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
-* Windows: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
-
-## Packaging
-
-Modify [electron-builder.yml](./electron-builder.yml) to edit package info.
-
-For a full list of options see: https://www.electron.build/configuration/configuration
-
-Create a package for macOS, Windows or Linux using one of the following commands:
-
-```
-npm run pack:mac
-npm run pack:win
-npm run pack:linux
-```
-
-## Tests
-
-```
-npm run test
-```
-
-## Maintainers
-
-- [@jschr](https://github.com/jschr)
-- [@pronebird](https://github.com/pronebird)
-
-## Apps using this boilerplate
-
-- [Mullvad VPN app](https://github.com/mullvad/mullvadvpn-app)
-- [YouTube Downloader Electron](https://github.com/vanzylv/youtube-downloader-electron)
-- [Martian: A Websocket test tool](https://github.com/drex44/martian)
+Copyrights for `public/favicon.ico`, `public/icon.ico` and `public/icon.png` are owned by [Brawlhalla, Blue Mammoth Games](https://www.brawlhalla.com/)
