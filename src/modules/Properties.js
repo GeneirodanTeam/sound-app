@@ -13,11 +13,17 @@ function Properties() {
 	];
 
 	return (
-		<div className="h-full xl:w-96 w-72 bg-myBlue-100 rounded-2xl mr-16 py-8 xl:px-12 px-8 flex flex-col">
+		<div className="h-full xl:w-96 w-72 bg-myBlue-100 rounded-2xl mr-16 flex flex-col">
 			<H1 title={"Properties of the sound"} />
 			<div className="flex-1 flex flex-col justify-between py-8">
 				{funcs.map((func) => {
-					return <Slider name={func.name} func={func.func} />;
+					return (
+						<Slider
+							key={func.name}
+							name={func.name}
+							func={func.func}
+						/>
+					);
 				})}
 			</div>
 		</div>
