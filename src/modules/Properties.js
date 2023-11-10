@@ -13,9 +13,9 @@ function Properties() {
 	];
 
 	return (
-		<div className="h-full xl:w-96 w-72 bg-myBlue-100 rounded-2xl mr-16 flex flex-col">
+		<div className="h-full xxl:w-96 w-80 bg-myBlue-100 rounded-2xl mr-16 flex flex-col">
 			<H1 title={"Properties of the sound"} />
-			<div className="flex-1 flex flex-col justify-between py-8">
+			<div className="flex-1 flex flex-col justify-between xxl:py-8">
 				{funcs.map((func) => {
 					return (
 						<Slider

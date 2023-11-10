@@ -5,7 +5,7 @@ import Description from "./Description";
 
 function Main() {
 	return (
-		<main className="w-full flex-1 flex py-8 [&>*]:py-8 xl:[&>*]:px-12 [&>*]:px-8">
+		<main className="w-full flex-1 flex pt-8 xxl:pb-8 pb-4 [&>*]:py-8 xxl:[&>*]:px-12 [&>*]:px-8">
 			<Properties />
 			<Displacement />
 			<Description />
