@@ -6,7 +6,7 @@ function Slider({ name, func }) {
 		setValue(event.target.value);
 	}
 	return (
-		<div className="flex flex-col justify-between xxl:h-14 h-12 opacity-70 duration-150 hover:opacity-100">
+		<div className="flex flex-col justify-between xxl:h-14 h-12 opacity-80 duration-150 hover:opacity-100">
 			<label className="text-xl font-normal">
 				{name}: {value}
 			</label>
