@@ -24,3 +24,4 @@ yarn-error.log*
 dist
 
 electron-builder.yaml
+!/src/cpp/build/
