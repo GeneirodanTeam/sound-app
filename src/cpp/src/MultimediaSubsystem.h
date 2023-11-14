@@ -19,6 +19,9 @@ class MultimediaSubsystem
     HRESULT getListener();
 
 public:
+    char* getBytes() const;
+    long getLength() const;
+
     HRESULT create();
     HRESULT open(LPTSTR fileName);
     HRESULT play() const;
@@ -54,4 +57,5 @@ public:
     
     HRESULT setVolume(const long value) const;
     HRESULT setFrequency(DWORD value) const;
+    
 };

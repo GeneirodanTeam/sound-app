@@ -249,3 +249,13 @@ HRESULT MultimediaSubsystem::getListener()
     }
     return hr;
 }
+
+char* MultimediaSubsystem::getBytes() const
+{
+    return _soundData;
+}
+
+long MultimediaSubsystem::getLength() const
+{
+    return _soundDataLength;
+}
