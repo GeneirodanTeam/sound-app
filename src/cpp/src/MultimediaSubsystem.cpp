@@ -224,9 +224,9 @@ HRESULT MultimediaSubsystem::setVelocity(const D3DVECTOR value) const
     return _soundBuffer3D->SetVelocity(value.x, value.y, value.z, DS3D_IMMEDIATE);
 }
 
-HRESULT MultimediaSubsystem::setVolume(const float value) const
+HRESULT MultimediaSubsystem::setVolume(const long value) const
 {
-    return _soundBuffer->SetVolume((1 - value) * DSBVOLUME_MIN);
+    return _soundBuffer->SetVolume(value);
 }
 
 HRESULT MultimediaSubsystem::setFrequency(const DWORD value) const
@@ -248,4 +248,14 @@ HRESULT MultimediaSubsystem::getListener()
         primary->Release();
     }
     return hr;
+}
+
+char* MultimediaSubsystem::getBytes() const
+{
+    return _soundData;
+}
+
+long MultimediaSubsystem::getLength() const
+{
+    return _soundDataLength;
 }

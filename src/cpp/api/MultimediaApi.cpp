@@ -121,7 +121,7 @@ Napi::Value MultimediaApi::getVolume(const Napi::CallbackInfo& info)
     const Napi::Env env = info.Env();
     Napi::HandleScope scope(env);
 
-    long answer = this->_actualClass->getVolume();
+    const long answer = this->_actualClass->getVolume();
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -130,7 +130,7 @@ Napi::Value MultimediaApi::getFrequency(const Napi::CallbackInfo& info)
     const Napi::Env env = info.Env();
     Napi::HandleScope scope(env);
 
-    long answer = this->_actualClass->getFrequency();
+    const long answer = this->_actualClass->getFrequency();
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -146,7 +146,7 @@ Napi::Value MultimediaApi::setDopplerFactor(const Napi::CallbackInfo& info)
 
     const auto num = info[0].As<Napi::Number>(); // convert to js number
 
-    long answer = this->_actualClass->setDopplerFactor(num.FloatValue());
+    const long answer = this->_actualClass->setDopplerFactor(num.FloatValue());
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -160,9 +160,9 @@ Napi::Value MultimediaApi::setMinDistance(const Napi::CallbackInfo& info)
         Napi::TypeError::New(env, "Number expected").ThrowAsJavaScriptException();
     }
 
-    const auto num = info[0].As<Napi::Number>(); 
+    const auto num = info[0].As<Napi::Number>();
 
-    long answer = this->_actualClass->setMinDistance(num.FloatValue());
+    const long answer = this->_actualClass->setMinDistance(num.FloatValue());
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -176,9 +176,9 @@ Napi::Value MultimediaApi::setMaxDistance(const Napi::CallbackInfo& info)
         Napi::TypeError::New(env, "Number expected").ThrowAsJavaScriptException();
     }
 
-    const auto num = info[0].As<Napi::Number>(); 
+    const auto num = info[0].As<Napi::Number>();
 
-    long answer = this->_actualClass->setMaxDistance(num.FloatValue());
+    const long answer = this->_actualClass->setMaxDistance(num.FloatValue());
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -192,9 +192,9 @@ Napi::Value MultimediaApi::setVolume(const Napi::CallbackInfo& info)
         Napi::TypeError::New(env, "Number expected").ThrowAsJavaScriptException();
     }
 
-    const auto num = info[0].As<Napi::Number>(); 
+    const auto num = info[0].As<Napi::Number>();
 
-    long answer = this->_actualClass->setVolume(num.FloatValue());
+    const long answer = this->_actualClass->setVolume(num.Int32Value());
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -208,9 +208,9 @@ Napi::Value MultimediaApi::setFrequency(const Napi::CallbackInfo& info)
         Napi::TypeError::New(env, "Number expected").ThrowAsJavaScriptException();
     }
 
-    const auto num = info[0].As<Napi::Number>(); 
+    const auto num = info[0].As<Napi::Number>();
 
-    long answer = this->_actualClass->setFrequency(num.Int64Value());
+    const long answer = this->_actualClass->setFrequency(num.Int32Value());
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -273,7 +273,7 @@ Napi::Value MultimediaApi::setVelocity(const Napi::CallbackInfo& info)
     const auto thirdNum = info[0].As<Napi::Number>();
 
     const auto answer = this->_actualClass->setVelocity(D3DVECTOR{ num.FloatValue(), secondNum.FloatValue(), thirdNum.FloatValue() });
-    return Napi::Number::New(info.Env(), answer);;
+    return Napi::Number::New(info.Env(), answer);
 }
 
 Napi::Value MultimediaApi::getWaveFormat(const Napi::CallbackInfo& info)
@@ -281,12 +281,12 @@ Napi::Value MultimediaApi::getWaveFormat(const Napi::CallbackInfo& info)
     const Napi::Env env = info.Env();
     Napi::HandleScope scope(env);
 
-    const auto format = this->_actualClass->getWaveFormat();
+    const auto [wFormatTag, nChannels, nSamplesPerSec, nAvgBytesPerSec, nBlockAlign, wBitsPerSample, cbSize] = this->_actualClass->getWaveFormat();
     auto arr = Napi::Uint32Array::New(info.Env(), 5);
-    arr[0] = format.nChannels;
-    arr[1] = format.nSamplesPerSec;
-    arr[2] = format.nAvgBytesPerSec;
-    arr[3] = format.nBlockAlign;
-    arr[4] = format.wBitsPerSample;
+    arr[0] = nChannels;
+    arr[1] = nSamplesPerSec;
+    arr[2] = nAvgBytesPerSec;
+    arr[3] = nBlockAlign;
+    arr[4] = wBitsPerSample;
     return arr;
 }
