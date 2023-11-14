@@ -1,25 +1,19 @@
-import React, { useState } from "react";
+import React, { memo } from "react";
 
-function Slider({ name, func }) {
-	const [value, setValue] = useState(0);
-	function onChange(event) {
-		setValue(event.target.value);
-	}
+export const Slider = memo(({ name, suffix = "", ...restProps }) => {
+	const { value } = restProps;
 	return (
-		<div className="flex flex-col justify-between xxl:h-14 h-12 opacity-80 duration-150 hover:opacity-100">
+		<div className="flex flex-col justify-between xxl:h-14 h-12 opacity-80 duration-150 hover:opacity-100 transition-opacity">
 			<label className="text-xl font-normal">
-				{name}: {value}
+				{name}: {`${value}${suffix}`}
 			</label>
 			<input
-				className="w-full"
+				className="range"
 				type="range"
 				min={0}
 				max={100}
-				value={value}
-				onChange={onChange}
+				{...restProps}
 			/>
 		</div>
 	);
-}
-
-export default Slider;
+});
