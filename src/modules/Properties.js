@@ -1,5 +1,5 @@
 import React from "react";
-import Slider from "./Slider";
+import { Slider } from "./Slider";
 import H1 from "./H1";
 
 function Properties() {
@@ -21,7 +21,7 @@ function Properties() {
 						<Slider
 							key={func.name}
 							name={func.name}
-							func={func.func}
+							onChange={func.func}
 						/>
 					);
 				})}
