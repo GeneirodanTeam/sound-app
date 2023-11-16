@@ -1,14 +1,12 @@
 import React, { useCallback, useEffect, useRef } from "react";
 
-export const OpenButton = () => {
+export const OpenButton = ({ setFileName }) => {
 	const inputRef = useRef(null);
 	const onChange = useCallback(() => {
+		const file = inputRef.current.files[0];
 		if (inputRef.current.files.length) {
-			console.log(
-				(
-					window.subsystem.open(inputRef.current.files[0].path) >>> 0
-				).toString(16),
-			);
+			setFileName(file.name);
+			console.log((window.subsystem.open(file.path) >>> 0).toString(16));
 		}
 	}, [inputRef]);
 
