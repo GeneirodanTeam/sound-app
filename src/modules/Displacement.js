@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import H1 from "./H1";
 import { Slider } from "./Slider";
-import { Canvas } from "./Canvas";
+import { Canvas } from "./DisplacementCanvas";
 import { useInterval } from "usehooks-ts";
 
 function Displacement() {
