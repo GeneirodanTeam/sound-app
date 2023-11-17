@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	Attenuation: {
 		get: window.subsystem.getVolume,
@@ -60,14 +60,16 @@ const { actions, name, reducer } = createSlice({
 			const substate = state[payload];
 			const value = substate.get();
 			if (value > substate.max) substate.set(substate.max);
-			substate.value = substate.get();
+			substate.value = Number(substate.get().toFixed(2));
 		},
 	},
 });
 export default reducer;
 export const { setValue, getValue } = actions;
-export const selector = (field) => (state) => {
-	const { get, set, ...restProps } = state[name][field];
-	return restProps;
-};
+const simpleSelector = (field) => (state) => state[name][field];
+export const selector = (field) =>
+	createSelector([simpleSelector(field)], (props) => {
+		const { get, set, ...restProps } = props;
+		return restProps;
+	});
 export const keys = Object.keys(initialState);

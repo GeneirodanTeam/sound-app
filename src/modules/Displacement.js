@@ -25,6 +25,7 @@ function Displacement() {
 		ballRef.current.style.bottom = `${y * 29 + 142}px`;
 		setAlpha((x) => x + (omega * freq) / 1000);
 		if (fileName) {
+			console.log(vX, vY);
 			window.subsystem.setPosition(x, 0, y);
 			window.subsystem.setVelocity(vX, 0, vY);
 		}
