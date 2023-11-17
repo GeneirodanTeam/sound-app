@@ -79,7 +79,7 @@ HRESULT MultimediaSubsystem::open(const LPTSTR fileName)
     return hr;
 }
 
-HRESULT MultimediaSubsystem::createBasicBuffer(DWORD dwBufferBytes)
+HRESULT MultimediaSubsystem::createBasicBuffer(const DWORD dwBufferBytes)
 {
     DSBUFFERDESC bufferDescriptor = {};
     bufferDescriptor.dwSize = sizeof(DSBUFFERDESC);
@@ -91,7 +91,7 @@ HRESULT MultimediaSubsystem::createBasicBuffer(DWORD dwBufferBytes)
     DSBCAPS_GLOBALFOCUS;
     bufferDescriptor.dwBufferBytes = dwBufferBytes;
     bufferDescriptor.lpwfxFormat = &_waveFormat;
-    bufferDescriptor.guid3DAlgorithm = DS3DALG_DEFAULT;//DS3DALG_HRTF_FULL;
+    bufferDescriptor.guid3DAlgorithm = DS3DALG_DEFAULT;
 
     // Create buffer.
 
@@ -185,11 +185,11 @@ D3DVECTOR MultimediaSubsystem::getVelocity() const
     return SUCCEEDED(hr) ? value : D3DVECTOR{-1, -1, -1};
 }
 
-LONG MultimediaSubsystem::getVolume() const
+D3DVALUE MultimediaSubsystem::getVolume() const
 {
-    LONG value;
+    long value;
     const auto hr = _soundBuffer->GetVolume(&value);
-    return SUCCEEDED(hr) ? value : -1;
+    return SUCCEEDED(hr) ? static_cast<float>(value)/100 : -1;
 }
 
 DWORD MultimediaSubsystem::getFrequency() const
@@ -226,7 +226,7 @@ HRESULT MultimediaSubsystem::setVelocity(const D3DVECTOR value) const
 
 HRESULT MultimediaSubsystem::setVolume(const long value) const
 {
-    return _soundBuffer->SetVolume(value);
+    return _soundBuffer->SetVolume(value * 100);
 }
 
 HRESULT MultimediaSubsystem::setFrequency(const DWORD value) const

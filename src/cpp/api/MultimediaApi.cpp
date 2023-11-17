@@ -8,25 +8,25 @@ Napi::Object MultimediaApi::init(const Napi::Env env, const Napi::Object exports
     Napi::HandleScope scope(env);
 
     const Napi::Function func = DefineClass(env, "MultimediaApi", {
-                                                InstanceMethod("open", &MultimediaApi::open),
-                                                InstanceMethod("create", &MultimediaApi::create),
-                                                InstanceMethod("play", &MultimediaApi::play),
-                                                InstanceMethod("stop", &MultimediaApi::stop),
-                                                InstanceMethod("getWaveFormat", &MultimediaApi::getWaveFormat),
-                                                InstanceMethod("getDopplerFactor", &MultimediaApi::getDopplerFactor),
-                                                InstanceMethod("getMinDistance", &MultimediaApi::getMinDistance),
-                                                InstanceMethod("getMaxDistance", &MultimediaApi::getMaxDistance),
-                                                InstanceMethod("getPosition", &MultimediaApi::getPosition),
-                                                InstanceMethod("getVelocity", &MultimediaApi::getVelocity),
-                                                InstanceMethod("getVolume", &MultimediaApi::getVolume),
-                                                InstanceMethod("getFrequency", &MultimediaApi::getFrequency),
-                                                InstanceMethod("setDopplerFactor", &MultimediaApi::setDopplerFactor),
-                                                InstanceMethod("setMinDistance", &MultimediaApi::setMinDistance),
-                                                InstanceMethod("setMaxDistance", &MultimediaApi::setMaxDistance),
-                                                InstanceMethod("setPosition", &MultimediaApi::setPosition),
-                                                InstanceMethod("setVelocity", &MultimediaApi::setVelocity),
-                                                InstanceMethod("setVolume", &MultimediaApi::setVolume),
-                                                InstanceMethod("setFrequency", &MultimediaApi::setFrequency)
+InstanceMethod("open", &MultimediaApi::open),
+InstanceMethod("create", &MultimediaApi::create),
+InstanceMethod("play", &MultimediaApi::play),
+InstanceMethod("stop", &MultimediaApi::stop),
+InstanceMethod("getWaveFormat", &MultimediaApi::getWaveFormat),
+InstanceMethod("getDopplerFactor", &MultimediaApi::getDopplerFactor),
+InstanceMethod("getMinDistance", &MultimediaApi::getMinDistance),
+InstanceMethod("getMaxDistance", &MultimediaApi::getMaxDistance),
+InstanceMethod("getPosition", &MultimediaApi::getPosition),
+InstanceMethod("getVelocity", &MultimediaApi::getVelocity),
+InstanceMethod("getVolume", &MultimediaApi::getVolume),
+InstanceMethod("getFrequency", &MultimediaApi::getFrequency),
+InstanceMethod("setDopplerFactor", &MultimediaApi::setDopplerFactor),
+InstanceMethod("setMinDistance", &MultimediaApi::setMinDistance),
+InstanceMethod("setMaxDistance", &MultimediaApi::setMaxDistance),
+InstanceMethod("setPosition", &MultimediaApi::setPosition),
+InstanceMethod("setVelocity", &MultimediaApi::setVelocity),
+InstanceMethod("setVolume", &MultimediaApi::setVolume),
+InstanceMethod("setFrequency", &MultimediaApi::setFrequency)
                                             });
 
     _constructor = Napi::Persistent(func);
@@ -194,7 +194,7 @@ Napi::Value MultimediaApi::setVolume(const Napi::CallbackInfo& info)
 
     const auto num = info[0].As<Napi::Number>();
 
-    const long answer = this->_actualClass->setVolume(num.Int32Value());
+    const long answer = this->_actualClass->setVolume(num.FloatValue());
     return Napi::Number::New(info.Env(), answer);
 }
 

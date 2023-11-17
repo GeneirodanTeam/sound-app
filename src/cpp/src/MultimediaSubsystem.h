@@ -40,7 +40,7 @@ public:
     D3DVECTOR getPosition() const;
     D3DVECTOR getVelocity() const;
 
-    LONG getVolume() const;
+    D3DVALUE getVolume() const;
     DWORD getFrequency() const;
 
     HRESULT setDopplerFactor(D3DVALUE value) const;

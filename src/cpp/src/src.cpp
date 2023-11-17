@@ -9,9 +9,9 @@ int main(int argc, char* argv[])
 {
     auto sub = MultimediaSubsystem();
     HRESULT hr = sub.create();
-    TCHAR fileName[] = TEXT("C:\\Sample.wav");
-    hr = sub.open(fileName);
-    hr = sub.play();
+    TCHAR fileName[] = TEXT("D:\\Downloads\\record.wav");
+    // hr = sub.open(fileName);
+    // hr = sub.play();
     bool b = true;
     while (b)
     {

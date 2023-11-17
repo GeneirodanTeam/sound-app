@@ -2,6 +2,7 @@
 <project version="4">
   <component name="UserContentModel">
     <attachedFolders>
+      <Path>../../../../sound-app</Path>
       <Path>../../../sound-app</Path>
     </attachedFolders>
     <explicitIncludes />
