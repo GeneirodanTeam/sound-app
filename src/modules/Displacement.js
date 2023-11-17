@@ -3,25 +3,32 @@ import H1 from "./H1";
 import { Slider } from "./Slider";
 import { Canvas } from "./DisplacementCanvas";
 import { useInterval } from "usehooks-ts";
+import { useSelector } from "react-redux";
+import { selector } from "../store/audioFile";
 
 function Displacement() {
 	const freq = 20;
+	const fileName = useSelector(selector);
 	const [a, setA] = useState(0);
 	const [b, setB] = useState(0);
 	const [velocity, setVelocity] = useState(1);
 	const ballRef = useRef(null);
 	const omega = useMemo(() => velocity * Math.PI, [velocity]);
 	const [alpha, setAlpha] = useState((omega * freq) / 1000);
-	// const vX = useMemo(() => -omega * y, [omega, y]);
-	// const vY = useMemo(() => omega * x, [omega, x]);
 	const suffix = useMemo(() => (velocity != 0 ? "\u03C0" : ""), [velocity]);
 	const move = useCallback(() => {
 		const x = b * Math.sin(alpha);
 		const y = a * Math.cos(alpha);
+		const vX = -omega * y;
+		const vY = omega * x;
 		ballRef.current.style.left = `${x * 29 + 142}px`;
 		ballRef.current.style.bottom = `${y * 29 + 142}px`;
 		setAlpha((x) => x + (omega * freq) / 1000);
-	}, [omega, alpha, a, b]);
+		if (fileName) {
+			window.subsystem.setPosition(x, 0, y);
+			window.subsystem.setVelocity(vX, 0, vY);
+		}
+	}, [omega, alpha, a, b, fileName]);
 	const onChange = useCallback(
 		(f) => (e) => {
 			f(e.target.value);

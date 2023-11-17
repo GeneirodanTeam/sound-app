@@ -1,15 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { HeaderCanvas } from "./HeaderCanvas";
 import { PlayButton } from "./PlayButton";
 import { OpenButton } from "./OpenButton";
+import { useSelector } from "react-redux";
+import { selector } from "../store/audioFile";
 
 function Header() {
-	const [fileName, setFileName] = useState("FileName.wav");
+	const fileName = useSelector(selector);
 
 	return (
 		<header className="w-full min-h-[7rem] pt-8 flex">
 			<div className="min-w-[12rem] h-full flex justify-between mr-8">
-				<OpenButton setFileName={setFileName} />
+				<OpenButton />
 				<PlayButton />
 			</div>
 			<div className="h-full flex-1 relative">

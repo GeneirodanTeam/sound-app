@@ -1,18 +1,26 @@
 import React, { useCallback, useEffect, useRef } from "react";
+import { setFileName } from "../store/audioFile";
+import { useDispatch } from "react-redux";
+import { getValue, keys } from "../store/properties";
 
-export const OpenButton = ({ setFileName }) => {
+export const OpenButton = () => {
 	const inputRef = useRef(null);
+	const dispatch = useDispatch();
 	const onChange = useCallback(() => {
 		const file = inputRef.current.files[0];
 		if (inputRef.current.files.length) {
-			setFileName(file.name);
-			console.log((window.subsystem.open(file.path) >>> 0).toString(16));
+			const audio = window.subsystem.open(file.path);
+			if (audio === 0) {
+				dispatch(setFileName(file.name));
+				keys.map((x) => dispatch(getValue(x)));
+			}
 		}
-	}, [inputRef]);
+	}, [inputRef, dispatch]);
 
 	useEffect(() => {
-		inputRef.current.addEventListener("change", onChange);
-		return inputRef.current.removeEventListener("change", onChange);
+		const input = inputRef.current;
+		input.addEventListener("change", onChange);
+		return () => input.removeEventListener("change", onChange);
 	}, [inputRef, onChange]);
 
 	return (
