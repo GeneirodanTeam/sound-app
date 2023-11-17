@@ -27,3 +27,4 @@ electron-builder.yaml
 /src/cpp/build
 /src/cpp/build/
 /src/cpp/src/x64/
+/src/node_modules/
