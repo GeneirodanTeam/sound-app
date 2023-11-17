@@ -189,7 +189,7 @@ D3DVALUE MultimediaSubsystem::getVolume() const
 {
     long value;
     const auto hr = _soundBuffer->GetVolume(&value);
-    return SUCCEEDED(hr) ? static_cast<float>(value)/100 : -1;
+    return SUCCEEDED(hr) ? static_cast<float>(value)/100.f : -1;
 }
 
 DWORD MultimediaSubsystem::getFrequency() const
@@ -224,7 +224,7 @@ HRESULT MultimediaSubsystem::setVelocity(const D3DVECTOR value) const
     return _soundBuffer3D->SetVelocity(value.x, value.y, value.z, DS3D_IMMEDIATE);
 }
 
-HRESULT MultimediaSubsystem::setVolume(const long value) const
+HRESULT MultimediaSubsystem::setVolume(const D3DVALUE value) const
 {
     return _soundBuffer->SetVolume(value * 100);
 }

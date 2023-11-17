@@ -55,7 +55,7 @@ public:
     HRESULT setVelocity(D3DVECTOR value) const;
 
     
-    HRESULT setVolume(const long value) const;
+    HRESULT setVolume(D3DVALUE value) const;
     HRESULT setFrequency(DWORD value) const;
     
 };
