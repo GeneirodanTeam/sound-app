@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	Attenuation: {
 		get: window.subsystem.getVolume,
@@ -18,7 +18,7 @@ const initialState = {
 		value: 0,
 		suffix: "Hz",
 	},
-	"Min distance": {
+	MinDistance: {
 		get: window.subsystem.getMinDistance,
 		set: window.subsystem.setMinDistance,
 		min: 1,
@@ -27,7 +27,7 @@ const initialState = {
 		value: 1,
 		suffix: "m",
 	},
-	"Max distance": {
+	MaxDistance: {
 		get: window.subsystem.getMaxDistance,
 		set: window.subsystem.setMaxDistance,
 		min: 1,
@@ -36,7 +36,7 @@ const initialState = {
 		value: 10,
 		suffix: "m",
 	},
-	"Doppler factor": {
+	DopplerFactor: {
 		get: window.subsystem.getDopplerFactor,
 		set: window.subsystem.setDopplerFactor,
 		min: 0,
@@ -60,14 +60,16 @@ const { actions, name, reducer } = createSlice({
 			const substate = state[payload];
 			const value = substate.get();
 			if (value > substate.max) substate.set(substate.max);
-			substate.value = substate.get();
+			substate.value = Number(substate.get().toFixed(2));
 		},
 	},
 });
 export default reducer;
 export const { setValue, getValue } = actions;
-export const selector = (field) => (state) => {
-	const { get, set, ...restProps } = state[name][field];
-	return restProps;
-};
+const simpleSelector = (field) => (state) => state[name][field];
+export const selector = (field) =>
+	createSelector([simpleSelector(field)], (props) => {
+		const { get, set, ...restProps } = props;
+		return restProps;
+	});
 export const keys = Object.keys(initialState);

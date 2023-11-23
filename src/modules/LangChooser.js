@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useCallback, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { languages } from "../utils/i18n";
 
 function LangChooser() {
-	const [lang, setLang] = useState("ua");
+	const { i18n } = useTranslation();
+	const langIndex = useMemo(
+		() => languages.indexOf(i18n.language),
+		[i18n.language],
+	);
 
-	const langChange = () => {
-		if (lang === "ua") setLang("uk");
-		else setLang("ua");
-	};
+	const langChange = useCallback(async () => {
+		const lang = languages[+!langIndex];
+		await i18n.changeLanguage(lang);
+		console.log(i18n.language);
+	}, [i18n, langIndex]);
 
 	return (
 		<button onClick={langChange}>
 			<img
-				src={`./assets/${lang}.png`}
+				src={`./assets/${i18n.language}.png`}
 				alt="Ukraine flag"
 				className="aspect-square h-full rounded-full"
 			/>

@@ -1,35 +1,34 @@
-import React from "react";
-import H1 from "./H1";
+import React, { memo, useMemo } from "react";
+import { H1 } from "./H1";
+import { useTranslation } from "../utils/useTranslation";
+import { useSelector } from "react-redux";
+import { selector } from "../store/funcName";
+import { Trans } from "./Trans";
 
-function Description() {
+export const Description = memo(() => {
+	const { t } = useTranslation();
+	const name = useSelector(selector);
+	const description = useMemo(
+		() =>
+			({
+				Attenuation: t("Attenuation:Description"),
+				Frequency: t("Frequency:Description"),
+				MinDistance: t("MinDistance:Description"),
+				MaxDistance: t("MaxDistance:Description"),
+				DopplerFactor: t("DopplerFactor:Description"),
+				Velocity: t("Velocity:Description"),
+				Position: t("Position:Description"),
+			}[name]),
+		[t, name],
+	);
 	return (
 		<div className="flex-1 h-full bg-myBlue-100 rounded-2xl flex flex-col">
-			<H1 title={"Description"} />
+			<H1>
+				<Trans>Description</Trans>
+			</H1>
 			<div className="h-[50vh] overflow-auto">
-				<p className="text-2xl leading-8 mb-4">
-					<span className="font-semibold text-myPurple-100">
-						FUNCTION
-					</span>
-					&nbsp;- description of the function description of the
-					function description of the function
-				</p>
-				<p className="text-2xl leading-8 mb-4">
-					<span className="font-semibold text-myPurple-100">
-						FUNCTION
-					</span>
-					&nbsp;- description of the function description of the
-					function description of the function
-				</p>
-				<p className="text-2xl leading-8 mb-4">
-					<span className="font-semibold text-myPurple-100">
-						FUNCTION
-					</span>
-					&nbsp;- description of the function description of the
-					function description of the function
-				</p>
+				<p className="text-2xl leading-8 mb-4">{description}</p>
 			</div>
 		</div>
 	);
-}
-
-export default Description;
+});

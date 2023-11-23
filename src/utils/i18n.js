@@ -10,6 +10,16 @@ i18n.use(LanguageDetector)
 	.use(initReactI18next)
 	.use(i18nextPlugin)
 	.init({
+		ns: [
+			"Translation",
+			"Attenuation",
+			"Frequency",
+			"MinDistance",
+			"MaxDistance",
+			"DopplerFactor",
+			"Velocity",
+			"Position",
+		],
 		initImmediate: false,
 		//debug: true,
 		fallbackLng: "en",

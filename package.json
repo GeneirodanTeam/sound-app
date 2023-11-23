@@ -8,6 +8,7 @@
 		"cross-env": "^7.0.3",
 		"electron": "^22.0.0",
 		"electron-builder": "^23.6.0",
+		"i18next-parser": "^8.9.0",
 		"node-gyp": "^9.4.0",
 		"postcss": "^8.4.19",
 		"prettier": "^2.8.0",
@@ -58,7 +59,8 @@
 		"format": "prettier --write .",
 		"update": "taze latest -w",
 		"build_ext": "node-gyp rebuild --directory=\"src/cpp\"",
-		"clean_ext": "node-gyp clean"
+		"clean_ext": "node-gyp clean",
+		"extract-translations": "i18next -c i18next-parser.config.js"
 	},
 	"eslintConfig": {
 		"extends": [

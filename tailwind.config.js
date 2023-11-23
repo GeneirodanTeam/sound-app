@@ -18,6 +18,7 @@ module.exports = {
 					400: "#7B146B",
 				},
 				myYellow: "#EAE7AF",
+				myOrange: "#FDB45E",
 			},
 		},
 	},
