@@ -1,11 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 
-function H1({ title }) {
-	return (
-		<h1 className="w-full text-left text-2xl font-semibold xxl:mb-12 mb-8">
-			{title}
-		</h1>
-	);
-}
-
-export default H1;
+export const H1 = memo(({ children }) => (
+	<h1 className="w-full text-left text-2xl font-semibold xxl:mb-12 mb-8">
+		{children}
+	</h1>
+));

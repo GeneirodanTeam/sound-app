@@ -1,12 +1,14 @@
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import H1 from "./H1";
+import React, { memo, useCallback, useMemo, useRef, useState } from "react";
+import { H1 } from "./H1";
 import { Slider } from "./Slider";
 import { Canvas } from "./DisplacementCanvas";
 import { useInterval } from "usehooks-ts";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selector } from "../store/audioFile";
+import { Trans } from "./Trans";
+import { setFuncName } from "../store/funcName";
 
-function Displacement() {
+export const Displacement = memo(() => {
 	const freq = 20;
 	const fileName = useSelector(selector);
 	const [a, setA] = useState(0);
@@ -14,22 +16,28 @@ function Displacement() {
 	const [velocity, setVelocity] = useState(1);
 	const ballRef = useRef(null);
 	const omega = useMemo(() => velocity * Math.PI, [velocity]);
-	const [alpha, setAlpha] = useState((omega * freq) / 1000);
+	const [alpha, setAlpha] = useState(0);
 	const suffix = useMemo(() => (velocity != 0 ? "\u03C0" : ""), [velocity]);
 	const move = useCallback(() => {
-		const x = b * Math.sin(alpha);
-		const y = a * Math.cos(alpha);
-		const vX = -omega * y;
-		const vY = omega * x;
-		ballRef.current.style.left = `${x * 29 + 142}px`;
-		ballRef.current.style.bottom = `${y * 29 + 142}px`;
-		setAlpha((x) => x + (omega * freq) / 1000);
 		if (fileName) {
-			console.log(vX, vY);
+			const x = b * Math.sin(alpha);
+			const y = a * Math.cos(alpha);
+			ballRef.current.style.left = `${x * 29 + 142}px`;
+			ballRef.current.style.bottom = `${y * 29 + 142}px`;
+			const delta = (omega * freq) / 1000;
+			const prevAlpha = alpha - delta;
+			const vX = (1000 * (b * Math.sin(prevAlpha) - x)) / freq;
+			const vY = (1000 * (a * Math.cos(prevAlpha) - y)) / freq;
+			setAlpha(alpha + delta);
 			window.subsystem.setPosition(x, 0, y);
 			window.subsystem.setVelocity(vX, 0, vY);
 		}
 	}, [omega, alpha, a, b, fileName]);
+
+	const dispatch = useDispatch();
+	const onMouseEnter = useCallback(() => {
+		dispatch(setFuncName("Position"));
+	}, [dispatch]);
 	const onChange = useCallback(
 		(f) => (e) => {
 			f(e.target.value);
@@ -41,8 +49,13 @@ function Displacement() {
 
 	return (
 		<div className="h-full min-w-fit flex flex-col bg-myBlue-100 rounded-2xl mr-16">
-			<H1 title={"Displacement of the sound"} />
-			<div className="grid grid-cols-10 items-center mb-4 relative">
+			<H1>
+				<Trans>Displacement of the sound</Trans>
+			</H1>
+			<div
+				className="grid grid-cols-10 items-center mb-4 relative"
+				onMouseEnter={onMouseEnter}
+			>
 				<input
 					type="range"
 					orient="vertical"
@@ -79,6 +92,4 @@ function Displacement() {
 			/>
 		</div>
 	);
-}
-
-export default Displacement;
+});

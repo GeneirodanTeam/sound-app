@@ -3,7 +3,7 @@ import LangChooser from "../modules/LangChooser";
 
 function Footer() {
 	return (
-		<footer className="w-full xxl:h-12 h-10 flex justify-end">
+		<footer className="w-full xxl:h-10 h-8 flex justify-end">
 			<LangChooser />
 		</footer>
 	);

@@ -1,7 +1,7 @@
 import React from "react";
-import Properties from "./Properties";
-import Displacement from "./Displacement";
-import Description from "./Description";
+import { Properties } from "./Properties";
+import { Displacement } from "./Displacement";
+import { Description } from "./Description";
 
 function Main() {
 	return (

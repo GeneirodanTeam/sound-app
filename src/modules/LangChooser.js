@@ -1,15 +1,17 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { languages } from "../utils/i18n";
 
 function LangChooser() {
-	const [langIndex, setLangIndex] = useState(0);
 	const { i18n } = useTranslation();
+	const langIndex = useMemo(
+		() => languages.indexOf(i18n.language),
+		[i18n.language],
+	);
 
 	const langChange = useCallback(async () => {
 		const lang = languages[+!langIndex];
 		await i18n.changeLanguage(lang);
-		setLangIndex((x) => +!x);
 		console.log(i18n.language);
 	}, [i18n, langIndex]);
 

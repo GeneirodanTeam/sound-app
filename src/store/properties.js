@@ -18,7 +18,7 @@ const initialState = {
 		value: 0,
 		suffix: "Hz",
 	},
-	"Min distance": {
+	MinDistance: {
 		get: window.subsystem.getMinDistance,
 		set: window.subsystem.setMinDistance,
 		min: 1,
@@ -27,7 +27,7 @@ const initialState = {
 		value: 1,
 		suffix: "m",
 	},
-	"Max distance": {
+	MaxDistance: {
 		get: window.subsystem.getMaxDistance,
 		set: window.subsystem.setMaxDistance,
 		min: 1,
@@ -36,7 +36,7 @@ const initialState = {
 		value: 10,
 		suffix: "m",
 	},
-	"Doppler factor": {
+	DopplerFactor: {
 		get: window.subsystem.getDopplerFactor,
 		set: window.subsystem.setDopplerFactor,
 		min: 0,
