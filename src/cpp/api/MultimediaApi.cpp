@@ -1,4 +1,4 @@
-// ReSharper disable CppExpressionWithoutSideEffects
+ас // ReSharper disable CppExpressionWithoutSideEffects
 #include "MultimediaApi.h"
 
 Napi::FunctionReference MultimediaApi::_constructor;
@@ -26,7 +26,9 @@ InstanceMethod("setMaxDistance", &MultimediaApi::setMaxDistance),
 InstanceMethod("setPosition", &MultimediaApi::setPosition),
 InstanceMethod("setVelocity", &MultimediaApi::setVelocity),
 InstanceMethod("setVolume", &MultimediaApi::setVolume),
-InstanceMethod("setFrequency", &MultimediaApi::setFrequency)
+InstanceMethod("setFrequency", &MultimediaApi::setFrequency),
+InstanceMethod("getLength", &MultimediaApi::getLength),
+InstanceMethod("getBytes", &MultimediaApi::getBytes)
                                             });
 
     _constructor = Napi::Persistent(func);
@@ -121,7 +123,7 @@ Napi::Value MultimediaApi::getVolume(const Napi::CallbackInfo& info)
     const Napi::Env env = info.Env();
     Napi::HandleScope scope(env);
 
-    const long answer = this->_actualClass->getVolume();
+    float answer = this->_actualClass->getVolume();
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -238,8 +240,8 @@ Napi::Value MultimediaApi::setPosition(const Napi::CallbackInfo& info)
     }
 
     const auto num = info[0].As<Napi::Number>();
-    const auto secondNum = info[0].As<Napi::Number>();
-    const auto thirdNum = info[0].As<Napi::Number>();
+    const auto secondNum = info[1].As<Napi::Number>();
+    const auto thirdNum = info[2].As<Napi::Number>();
 
     const auto answer = this->_actualClass->setPosition(D3DVECTOR{num.FloatValue(), secondNum.FloatValue(), thirdNum.FloatValue()});
     return Napi::Number::New(info.Env(), answer);;
@@ -269,8 +271,8 @@ Napi::Value MultimediaApi::setVelocity(const Napi::CallbackInfo& info)
     }
 
     const auto num = info[0].As<Napi::Number>();
-    const auto secondNum = info[0].As<Napi::Number>();
-    const auto thirdNum = info[0].As<Napi::Number>();
+    const auto secondNum = info[1].As<Napi::Number>();
+    const auto thirdNum = info[2].As<Napi::Number>();
 
     const auto answer = this->_actualClass->setVelocity(D3DVECTOR{ num.FloatValue(), secondNum.FloatValue(), thirdNum.FloatValue() });
     return Napi::Number::New(info.Env(), answer);
@@ -288,5 +290,27 @@ Napi::Value MultimediaApi::getWaveFormat(const Napi::CallbackInfo& info)
     arr[2] = nAvgBytesPerSec;
     arr[3] = nBlockAlign;
     arr[4] = wBitsPerSample;
+    return arr;
+}
+
+Napi::Value MultimediaApi::getLength(const Napi::CallbackInfo& info)
+{
+    const Napi::Env env = info.Env();
+    Napi::HandleScope scope(env);
+
+    const float answer = this->_actualClass->getVolume();
+    return Napi::Number::New(info.Env(), answer);
+}
+
+Napi::Value MultimediaApi::getBytes(const Napi::CallbackInfo& info)
+{
+    const Napi::Env env = info.Env();
+    Napi::HandleScope scope(env);
+
+    const auto length = this->_actualClass->getLength();
+    const auto bytes = this->_actualClass->getBytes();
+    auto arr = Napi::Int8Array::New(info.Env(), length);
+    for (int i = 0; i < length; ++i)
+        arr[i] = bytes[i];
     return arr;
 }

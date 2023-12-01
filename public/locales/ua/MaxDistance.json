@@ -1,0 +1,4 @@
+{
+  "Description": "<0>GetMaxDistance - запит максимальної відстані.</0><br/> <1>HRESULT IDirectSound3DBuffer::GetMaxDistance(<br/></1> <3/><1>D3DVALUE*</1> <2>MaxDistance</2><br/> <1>);</1><br/> <2>MaxDistance</2> - вказівник змінної, у яку повертається поточне значення максимальної відстанні між джерелом та слухачем.<br/><br/> <0>SetMaxDistance - встановлення максимальної відстанні.</0><br/> <1>HRESULT IDirectSound3DBuffer::SetMaxDistance(</1><br/> <3/><1>D3DVALUE</1> <2>MaxDistance</2>,<br/> <3/><1>DWORD Apply</1><br/> <1>);</1><br/> <2>MaxDistance</2> - нове значення максимальної відстані між джерелом та слухачем. За замовчуванням встановлено значення <2>DS3D_DEFAULTMAXDISTANCE</2>, еквівалентне одній одиниці відстані (за замовчуванням - один метр).",
+  "Name": "Максимальна відстань"
+}

@@ -1,0 +1,4 @@
+{
+  "Description": "<0>GetMinDistance - запит мінімальної відстані.</0><br/> <1>HRESULT IDirectSound3DBuffer::GetMinDistance(<br/></1> <3/><1>D3DVALUE*</1> <2>MinDistance</2><br/> <1>);</1><br/> <2>MinDistance</2> - вказівник змінної, у яку повертається поточне значення мінімальної відстанні між джерелом та слухачем.<br/><br/> <0>SetMinDistance - встановлення мінімальної відстанні.</0><br/> <1>HRESULT IDirectSound3DBuffer::SetMinDistance(</1><br/> <3/><1>D3DVALUE</1> <2>MinDistance</2>,<br/> <3/><1>DWORD Apply</1><br/> <1>);</1><br/> <2>MinDistance</2> - нове значення мінімальної відстані між джерелом та слухачем. За замовчуванням встановлено значення <2>DS3D_DEFAULTMINDISTANCE</2>, еквівалентне одній одиниці відстані (за замовчуванням - один метр).",
+  "Name": "Мінімальна відстань"
+}

@@ -41,4 +41,7 @@ private:
 
     Napi::Value setVolume(const Napi::CallbackInfo& info);
     Napi::Value setFrequency(const Napi::CallbackInfo& info);
+
+    Napi::Value getLength(const Napi::CallbackInfo& info);
+    Napi::Value getBytes(const Napi::CallbackInfo& info);
 };

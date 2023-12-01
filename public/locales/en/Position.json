@@ -1,0 +1,3 @@
+{
+  "Description": "<0>GetPosition - retrieves the listener's position.</0><br/> <1>HRESULT IDirectSound3DBuffer::GetPosition(<br/></1> <3/><1>D3DVECTOR*</1> <2>Position</2><br/> <1>);</1><br/> <2>Position</2> - address of a D3DVECTOR structure that receives the listener's position vector.<br/><br/> <0>SetPosition - sets the listener's position.</0><br/> <1>HRESULT IDirectSound3DBuffer::SetPosition(</1><br/> <3/><1>D3DVALUE</1> <2>X</2>,<br/> <3/><1>D3DVALUE</1> <2>Y</2>,<br/> <3/><1>D3DVALUE</1> <2>Z</2>,<br/> <3/><1>DWORD</1> <2>Apply</2><br/> <1>);</1><br/> <2>X, Y, Z</2> - new coordinates of the sound source. The subsystem can adjust the coordinates before installation if there is a risk of overflow during calculations."
+}

@@ -27,7 +27,7 @@ public:
     HRESULT play() const;
     HRESULT stop() const;
 
-    WAVEFORMATEX getWaveFormat() const;
+    WAVEFORMATEX getWaveFormat() const; 
 
     D3DVALUE getDopplerFactor() const;
 
@@ -38,7 +38,7 @@ public:
     D3DVALUE getMinDistance() const;
     D3DVALUE getMaxDistance() const;
     D3DVECTOR getPosition() const;
-    D3DVECTOR getVelocity() const;
+    D3DVECTOR getVelocity() const; 
 
     D3DVALUE getVolume() const;
     DWORD getFrequency() const;
@@ -51,8 +51,8 @@ public:
 
     HRESULT setMinDistance(D3DVALUE value) const;
     HRESULT setMaxDistance(D3DVALUE value) const;
-    HRESULT setPosition(D3DVECTOR value) const;
-    HRESULT setVelocity(D3DVECTOR value) const;
+    HRESULT setPosition(D3DVECTOR value) const; 
+    HRESULT setVelocity(D3DVECTOR value) const; 
 
     
     HRESULT setVolume(D3DVALUE value) const;
