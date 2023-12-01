@@ -27,7 +27,7 @@ export const Description = memo(() => {
 				<Trans>Description</Trans>
 			</H1>
 			<div className="h-[50vh] overflow-auto">
-				<p className="text-2xl leading-8 mb-4">{description}</p>
+				<p className="text-xl leading-8 mb-4">{description}</p>
 			</div>
 		</div>
 	);

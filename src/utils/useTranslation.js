@@ -13,6 +13,7 @@ export const useTranslation = () => {
 						<span className="font-semibold" />,
 						<span className="text-myOrange" />,
 						<span className="text-myPurple-100" />,
+						<span className="ml-10" />,
 					]}
 				/>
 			),

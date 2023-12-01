@@ -46,7 +46,7 @@ export const Canvas = memo(({ styles, ballRef }) => {
 			></div>
 			<div
 				ref={ballRef}
-				className="absolute bg-myYellow h-[16px] w-[16px] rounded-full"
+				className="absolute bg-myYellow h-[16px] w-[16px] rounded-full bottom-[142px] left-[142px]"
 				style={{ boxShadow: "0px 0px 4px 1px #75734D inset" }}
 			></div>
 		</div>
