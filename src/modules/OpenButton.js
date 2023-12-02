@@ -1,21 +1,34 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { setFileName } from "../store/audioFile";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getValue, keys } from "../store/properties";
+import { selector } from "../store/wavesurfer";
 
 export const OpenButton = () => {
 	const inputRef = useRef(null);
 	const dispatch = useDispatch();
+	const wavesurfer = useSelector(selector);
 	const onChange = useCallback(() => {
-		const file = inputRef.current.files[0];
 		if (inputRef.current.files.length) {
+			const file = inputRef.current.files[0];
 			const audio = window.subsystem.open(file.path);
 			if (audio === 0) {
 				dispatch(setFileName(file.name));
 				keys.map((x) => dispatch(getValue(x)));
+				let reader = new FileReader();
+				reader.onload = (evt) => {
+					let blob = new window.Blob([
+						new Uint8Array(evt.target.result),
+					]);
+					wavesurfer.loadBlob(blob);
+				};
+				reader.onerror = (evt) => {
+					console.error("An error ocurred reading the file: ", evt);
+				};
+				reader.readAsArrayBuffer(file);
 			}
 		}
-	}, [inputRef, dispatch]);
+	}, [inputRef, dispatch, wavesurfer]);
 
 	useEffect(() => {
 		const input = inputRef.current;

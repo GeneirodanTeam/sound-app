@@ -8,6 +8,8 @@ contextBridge.exposeInMainWorld("subsystem", {
 	stop: () => api.stop(),
 	open: (filename) => api.open(filename),
 	play: () => api.play(),
+	getBytes: () => api.getBytes(),
+	getLength: () => api.getLength(),
 	getWaveFormat: () => api.getWaveFormat(),
 	getVelocity: () => api.getVelocity(),
 	getPosition: () => api.getPosition(),

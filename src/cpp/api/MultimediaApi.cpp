@@ -1,4 +1,3 @@
-ас // ReSharper disable CppExpressionWithoutSideEffects
 #include "MultimediaApi.h"
 
 Napi::FunctionReference MultimediaApi::_constructor;
@@ -298,7 +297,7 @@ Napi::Value MultimediaApi::getLength(const Napi::CallbackInfo& info)
     const Napi::Env env = info.Env();
     Napi::HandleScope scope(env);
 
-    const float answer = this->_actualClass->getVolume();
+    const long answer = this->_actualClass->getLength();
     return Napi::Number::New(info.Env(), answer);
 }
 
@@ -309,8 +308,8 @@ Napi::Value MultimediaApi::getBytes(const Napi::CallbackInfo& info)
 
     const auto length = this->_actualClass->getLength();
     const auto bytes = this->_actualClass->getBytes();
-    auto arr = Napi::Int8Array::New(info.Env(), length);
+    auto arr = Napi::Int32Array::New(info.Env(), length);
     for (int i = 0; i < length; ++i)
-        arr[i] = bytes[i];
+        arr[i] = (int)bytes[i];
     return arr;
 }

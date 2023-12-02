@@ -12162,6 +12162,11 @@ watchpack@^2.4.0:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
 
+wavesurfer.js@^7.4.12:
+  version "7.4.12"
+  resolved "https://registry.yarnpkg.com/wavesurfer.js/-/wavesurfer.js-7.4.12.tgz#49fa367d90945ba4f36b2fe557984021f3160d61"
+  integrity sha512-KzH4LkcOp8LECs9cOVIPBl6vsSoICKuZz+v5kh/zvxilpaVszU+QKC+4s2KEAqcCxBCecg3cNSg4RqAx278F8g==
+
 wbuf@^1.1.0, wbuf@^1.7.3:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/wbuf/-/wbuf-1.7.3.tgz#c1d8d149316d3ea852848895cb6a0bfe887b87df"
