@@ -5,7 +5,7 @@ import { PropsSlider } from "./PropsSlider";
 import { Trans } from "./Trans";
 
 export const Properties = memo(() => (
-	<div className="h-full xxl:w-[28rem] w-[22rem] bg-myBlue-100 rounded-2xl mr-16 flex flex-col">
+	<div className="h-full xxl:w-[24rem] w-[20rem] bg-myBlue-100 rounded-2xl mr-16 flex flex-col">
 		<H1>
 			<Trans>Properties of the sound</Trans>
 		</H1>

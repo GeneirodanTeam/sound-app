@@ -1,16 +1,21 @@
 import React, { useCallback, useMemo, useState } from "react";
+import { selector } from "../store/audioFile";
+import { useSelector } from "react-redux";
 
 export const PlayButton = () => {
+	const fileName = useSelector(selector);
 	const [play, setPlay] = useState(false);
 	const src = useMemo(
 		() => (play ? "./assets/pause.svg" : "./assets/play_arrow.svg"),
 		[play],
 	);
 	const onClick = useCallback(() => {
-		if (play) console.log(window.subsystem.stop());
-		else console.log(window.subsystem.play());
-		setPlay(!play);
-	}, [play]);
+		if (fileName) {
+			if (play) window.subsystem.stop();
+			else window.subsystem.play();
+			setPlay(!play);
+		}
+	}, [fileName, play]);
 	return (
 		<button
 			onClick={onClick}

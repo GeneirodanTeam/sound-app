@@ -3,8 +3,10 @@ import { setFileName } from "../store/audioFile";
 import { useDispatch, useSelector } from "react-redux";
 import { getValue, keys } from "../store/properties";
 import { selector } from "../store/wavesurfer";
+import { useTranslation } from "react-i18next";
 
 export const OpenButton = () => {
+	const { t } = useTranslation();
 	const inputRef = useRef(null);
 	const dispatch = useDispatch();
 	const wavesurfer = useSelector(selector);
@@ -12,6 +14,14 @@ export const OpenButton = () => {
 		if (inputRef.current.files.length) {
 			const file = inputRef.current.files[0];
 			const audio = window.subsystem.open(file.path);
+			if (window.subsystem.getWaveFormat()[0] > 1) {
+				alert(
+					t(
+						"Your audio is in 2-channel, please choose 1-channel audio.",
+					),
+				);
+				return;
+			}
 			if (audio === 0) {
 				dispatch(setFileName(file.name));
 				keys.map((x) => dispatch(getValue(x)));
@@ -28,7 +38,7 @@ export const OpenButton = () => {
 				reader.readAsArrayBuffer(file);
 			}
 		}
-	}, [inputRef, dispatch, wavesurfer]);
+	}, [inputRef, dispatch, wavesurfer, t]);
 
 	useEffect(() => {
 		const input = inputRef.current;

@@ -8,7 +8,7 @@ let config = {
 	isQuiting: false,
 	mainWindow: null,
 	popupWindow: null,
-	isDev,
+	isDev: false,
 };
 
 module.exports = config;

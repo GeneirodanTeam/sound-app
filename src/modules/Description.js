@@ -22,7 +22,7 @@ export const Description = memo(() => {
 		[t, name],
 	);
 	return (
-		<div className="flex-1 h-full bg-myBlue-100 rounded-2xl flex flex-col">
+		<div className="flex-1 min-w-[26rem] h-full bg-myBlue-100 rounded-2xl flex flex-col">
 			<H1>
 				<Trans>Description</Trans>
 			</H1>

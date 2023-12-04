@@ -1,5 +1,7 @@
 {
-  "Description": "Опис",
-  "Displacement of the sound": "Розташування звуку",
-  "Properties of the sound": "Властивості звуку"
+	"Description": "Опис",
+	"Displacement of the sound": "Розташування звуку",
+	"Your audio is in 2-channel, please choose 1-channel audio.": "Ваше аудіо є 2-ох канальним, будь ласка, оберіть 1 канальне аудіо.",
+	"Properties of the sound": "Властивості звуку",
+	"You have to open file to do it!": "Спочатку ви маєте відкрити файл!"
 }

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { languages } from "../utils/i18n";
 
@@ -14,6 +14,10 @@ function LangChooser() {
 		await i18n.changeLanguage(lang);
 		console.log(i18n.language);
 	}, [i18n, langIndex]);
+
+	useEffect(() => {
+		if (!languages.includes(i18n.language)) langChange();
+	}, []);
 
 	return (
 		<button onClick={langChange}>

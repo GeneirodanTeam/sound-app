@@ -1,5 +1,7 @@
 {
   "Description": "Description",
   "Displacement of the sound": "Displacement of the sound",
-  "Properties of the sound": "Properties of the sound"
+  "Your audio is in 2-channel, please choose 1-channel audio": "Your audio is in 2-channel, please choose 1-channel audio",
+  "Properties of the sound": "Properties of the sound",
+  "You have to open file to do it!": "You have to open file to do it!"
 }
