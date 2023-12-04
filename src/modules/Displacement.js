@@ -9,6 +9,7 @@ import { Trans } from "./Trans";
 import { setFuncName } from "../store/funcName";
 
 export const Displacement = memo(() => {
+	const timer = useRef();
 	const freq = 20;
 	const fileName = useSelector(selector);
 	const [a, setA] = useState(0);
@@ -36,8 +37,13 @@ export const Displacement = memo(() => {
 
 	const dispatch = useDispatch();
 	const onMouseEnter = useCallback(() => {
-		dispatch(setFuncName("Position"));
+		timer.current = setTimeout(() => {
+			dispatch(setFuncName("Position"));
+		}, 500);
 	}, [dispatch]);
+	const onMouseLeave = () => {
+		if (timer.current) clearTimeout(timer.current);
+	};
 	const onChange = useCallback(
 		(f) => (e) => {
 			f(e.target.value);
@@ -55,6 +61,7 @@ export const Displacement = memo(() => {
 			<div
 				className="grid grid-cols-10 items-center mb-4 relative"
 				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
 			>
 				<input
 					type="range"
