@@ -5,8 +5,11 @@ const config = require("./config");
 
 exports.createMainWindow = async () => {
 	const window = new BrowserWindow({
-		width: 800,
-		height: 600,
+		width: 1920,
+		height: 1080,
+		minWidth: 800,
+		minHeight: 600,
+		autoHideMenuBar: true,
 		webPreferences: {
 			nodeIntegration: true,
 			enableRemoteModule: true,
@@ -18,7 +21,8 @@ exports.createMainWindow = async () => {
 		icon: config.icon,
 		title: config.appName,
 	});
-
+	window.maximize();
+	window.removeMenu();
 	await window.loadURL(
 		config.isDev
 			? "http://localhost:3000"
