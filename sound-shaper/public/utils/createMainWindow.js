@@ -12,6 +12,7 @@ exports.createMainWindow = async () => {
 		autoHideMenuBar: true,
 		webPreferences: {
 			nodeIntegration: true,
+			nodeIntegrationInWorker: true,
 			enableRemoteModule: true,
 			devTools: config.isDev,
 			contextIsolation: true,
@@ -22,7 +23,7 @@ exports.createMainWindow = async () => {
 		title: config.appName,
 	});
 	window.maximize();
-	window.removeMenu();
+	//window.removeMenu();
 	await window.loadURL(
 		config.isDev
 			? "http://localhost:3000"

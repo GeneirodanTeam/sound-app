@@ -5,10 +5,10 @@ let config = {
 	appName: "Sound Shaper",
 	icon: join(__dirname, "..", "/favicon.ico"),
 	tray: null,
-	isQuiting: false,
+	isQuiting: true,
 	mainWindow: null,
 	popupWindow: null,
-	isDev: false,
+	isDev,
 };
 
 module.exports = config;

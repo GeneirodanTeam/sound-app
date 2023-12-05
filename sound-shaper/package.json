@@ -3,6 +3,7 @@
 	"version": "1.0.1",
 	"private": true,
 	"devDependencies": {
+		"@electron/rebuild": "^3.4.1",
 		"autoprefixer": "^10.4.13",
 		"concurrently": "^8.0.1",
 		"cross-env": "^7.0.3",
@@ -40,6 +41,7 @@
 		"react-use": "^17.4.0",
 		"redux": "^4.2.1",
 		"redux-thunk": "^2.4.2",
+		"sound-shaper-addon": "file:./../sound-shaper-addon",
 		"translation-check": "^1.1.0",
 		"use-debounce": "^10.0.0",
 		"usehooks-ts": "^2.9.1",
@@ -60,9 +62,8 @@
 		"deploy": "npm run react:build && npm run electron:deploy",
 		"format": "prettier --write .",
 		"update": "taze latest -w",
-		"build_ext": "node-gyp rebuild --directory=\"src/cpp\"",
-		"clean_ext": "node-gyp clean",
-		"extract-translations": "i18next -c i18next-parser.config.js"
+		"extract-translations": "i18next -c i18next-parser.config.js",
+		"install_addon": "yarn add file:./../sound-shaper-addon --force"
 	},
 	"eslintConfig": {
 		"extends": [

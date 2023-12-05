@@ -1,6 +1,6 @@
 #include <napi.h>
 
-#include "api/MultimediaApi.h"
+#include "src/MultimediaApi.h"
 #pragma comment(lib, "dsound.lib")
 #pragma comment(lib, "Winmm.lib")
 #pragma comment(lib, "Dxguid.lib")

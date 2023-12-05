@@ -1,6 +1,6 @@
 #pragma once
 #include <napi.h>
-#include "../src/MultimediaSubsystem.h"
+#include "MultimediaSubsystem.h"
 
 class MultimediaApi final : public Napi::ObjectWrap<MultimediaApi>
 {

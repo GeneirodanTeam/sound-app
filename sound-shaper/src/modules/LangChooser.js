@@ -17,7 +17,7 @@ function LangChooser() {
 
 	useEffect(() => {
 		if (!languages.includes(i18n.language)) langChange();
-	}, []);
+	}, [i18n.language, langChange]);
 
 	return (
 		<button onClick={langChange}>
