@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect, useRef } from "react";
-import { setFileName } from "../store/audioFile";
+import React, {memo, useCallback, useEffect, useRef} from "react";
+import { setFileName } from "../../store/audioFile";
 import { useDispatch, useSelector } from "react-redux";
-import { getValue, keys } from "../store/properties";
-import { selector } from "../store/wavesurfer";
+import { getValue, keys } from "../../store/properties";
+import { selector } from "../../store/wavesurfer";
 import { useTranslation } from "react-i18next";
 
-export const OpenButton = () => {
+export const OpenButton = memo(() => {
 	const { t } = useTranslation();
-	const inputRef = useRef(null);
+	const inputRef = useRef();
 	const dispatch = useDispatch();
 	const wavesurfer = useSelector(selector);
 	const onChange = useCallback(() => {
@@ -32,9 +32,7 @@ export const OpenButton = () => {
 					]);
 					wavesurfer.loadBlob(blob);
 				};
-				reader.onerror = (evt) => {
-					console.error("An error ocurred reading the file: ", evt);
-				};
+				reader.onerror = (evt) => console.error("An error occurred reading the file: ", evt);
 				reader.readAsArrayBuffer(file);
 			}
 		}
@@ -48,7 +46,7 @@ export const OpenButton = () => {
 
 	return (
 		<label className="relative h-full aspect-square bg-myPurple-200 rounded-full flex justify-center items-center shadow-[0px_5px_0px] shadow-myPurple-400 hover:bg-myPurple-300 active:shadow-none active:translate-y-[5px] duration-150  cursor-pointer">
-			<img className={"h-8 w-8"} src={"./assets/plus.svg"} alt={"plus"} />
+			<img className="h-8 w-8" src={"./assets/plus.svg"} alt="plus" />
 			<input
 				ref={inputRef}
 				type="file"
@@ -58,4 +56,4 @@ export const OpenButton = () => {
 			></input>
 		</label>
 	);
-};
+});

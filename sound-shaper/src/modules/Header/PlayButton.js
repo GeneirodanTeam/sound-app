@@ -1,8 +1,8 @@
-import React, { useCallback, useMemo, useState } from "react";
-import { selector } from "../store/audioFile";
+import React, {memo, useCallback, useMemo, useState} from "react";
+import { selector } from "../../store/audioFile";
 import { useSelector } from "react-redux";
 
-export const PlayButton = () => {
+export const PlayButton = memo(() => {
 	const fileName = useSelector(selector);
 	const [play, setPlay] = useState(false);
 	const src = useMemo(
@@ -21,7 +21,7 @@ export const PlayButton = () => {
 			onClick={onClick}
 			className="h-full aspect-square bg-myPurple-200 rounded-full flex justify-center items-center shadow-[0px_5px_0px] shadow-myPurple-400 hover:bg-myPurple-300 active:shadow-none active:translate-y-[5px]"
 		>
-			<img className={"h-12 w-12"} src={src} alt={"play_arrow"} />
+			<img className="h-12 w-12" src={src} alt="play_arrow" />
 		</button>
 	);
-};
+});
