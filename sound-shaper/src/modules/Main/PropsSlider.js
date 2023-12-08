@@ -15,13 +15,21 @@ export const PropsSlider = memo(({ name }) => {
 			if (fileName) {
 				dispatch(setValue({ name, value }));
 				dispatch(getValue(name));
-			} else
-				window.dialog.showErrorBox(
-					t("Alert!"),
-					t("You have to open file to do it!"),
-				);
+			}
+			//  else
+			// 	window.subsystem.showErrorBox(
+			// 		t("Alert!"),
+			// 		t("You have to open file to do it!"),
+			// 	);
 		},
 		[dispatch, fileName, name, t],
 	);
-	return <Slider name={name} onChange={onChange} {...restProps} />;
+	return (
+		<Slider
+			name={name}
+			onChange={onChange}
+			disabled={!fileName}
+			{...restProps}
+		/>
+	);
 });

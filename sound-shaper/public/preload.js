@@ -1,4 +1,4 @@
-const { contextBridge, dialog } = require("electron");
+const { contextBridge, ipcRenderer } = require("electron");
 const { MultimediaApi } = require("sound-shaper-addon");
 const api = new MultimediaApi();
 api.create();
@@ -23,8 +23,6 @@ contextBridge.exposeInMainWorld("subsystem", {
 	setMaxDistance: (value) => api.setMaxDistance(value),
 	setVolume: (value) => api.setVolume(value),
 	setFrequency: (value) => api.setFrequency(value),
-});
-
-contextBridge.exposeInMainWorld("dialog", {
-	showErrorBox: (title, message) => dialog.showErrorBox(title, message),
+	showErrorBox: (title, message) =>
+		ipcRenderer.invoke("dialog", title, message),
 });

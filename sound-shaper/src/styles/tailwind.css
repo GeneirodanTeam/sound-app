@@ -46,4 +46,8 @@
 		@apply bg-myPurple-200 shadow-[-408px_0_0_400px] shadow-myPurple-400 rounded-full h-[14px] aspect-square cursor-ew-resize appearance-none;
 		-webkit-appearance: none;
 	}
+
+	input {
+		@apply disabled:opacity-60 disabled:hover:opacity-60 disabled:hover:cursor-not-allowed;
+	}
 }

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, dialog, ipcMain } = require("electron");
 const isDev = require("electron-is-dev");
 const { join } = require("path");
 
@@ -52,6 +52,9 @@ app.whenReady().then(async () => {
 		// 	]).popup(mainWindow);
 		// });
 	}
+	ipcMain.handle("dialog", (e, title, content) => {
+		dialog.showErrorBox(title, content);
+	});
 });
 
 app.on("window-all-closed", () => {

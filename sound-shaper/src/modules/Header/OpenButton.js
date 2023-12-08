@@ -15,7 +15,7 @@ export const OpenButton = memo(() => {
 			const file = inputRef.current.files[0];
 			const audio = window.subsystem.open(file.path);
 			if (window.subsystem.getWaveFormat()[0] > 1) {
-				window.dialog.showErrorBox(
+				window.subsystem.showErrorBox(
 					t("Alert!"),
 					t(
 						"Your audio is in 2-channel, please choose 1-channel audio.",
