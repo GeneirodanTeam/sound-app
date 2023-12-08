@@ -1,4 +1,4 @@
-import React, {memo, useCallback, useEffect, useRef} from "react";
+import React, { memo, useCallback, useEffect, useRef } from "react";
 import { setFileName } from "../../store/audioFile";
 import { useDispatch, useSelector } from "react-redux";
 import { getValue, keys } from "../../store/properties";
@@ -15,7 +15,8 @@ export const OpenButton = memo(() => {
 			const file = inputRef.current.files[0];
 			const audio = window.subsystem.open(file.path);
 			if (window.subsystem.getWaveFormat()[0] > 1) {
-				alert(
+				window.dialog.showErrorBox(
+					t("Alert!"),
 					t(
 						"Your audio is in 2-channel, please choose 1-channel audio.",
 					),
@@ -32,7 +33,8 @@ export const OpenButton = memo(() => {
 					]);
 					wavesurfer.loadBlob(blob);
 				};
-				reader.onerror = (evt) => console.error("An error occurred reading the file: ", evt);
+				reader.onerror = (evt) =>
+					console.error("An error occurred reading the file: ", evt);
 				reader.readAsArrayBuffer(file);
 			}
 		}
