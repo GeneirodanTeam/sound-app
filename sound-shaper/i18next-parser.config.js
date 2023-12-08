@@ -5,6 +5,6 @@ module.exports = {
 		default: ["JavascriptLexer"],
 	},
 	locales: ["en", "uk"],
-	output: "public/locales/$LOCALE/$NAMESPACE.json",
+	output: "src/locales/$LOCALE/$NAMESPACE.json",
 	input: ["src/**/*.js"],
 };

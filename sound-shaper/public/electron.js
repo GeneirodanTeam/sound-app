@@ -36,22 +36,6 @@ app.whenReady().then(async () => {
 				: `file://${join(__dirname, "..", "/build/index.html")}`,
 		)
 		.then(() => mainWindow.show());
-	// mainWindow.once("ready-to-show", () => mainWindow.show());
-	if (isDev) {
-		// auto-open dev tools
-		// mainWindow.webContents.openDevTools();
-		// // add inspect element on right click menu
-		// mainWindow.webContents.on("context-menu", (e, props) => {
-		// 	Menu.buildFromTemplate([
-		// 		{
-		// 			label: "Inspect element",
-		// 			click() {
-		// 				mainWindow.inspectElement(props.x, props.y);
-		// 			},
-		// 		},
-		// 	]).popup(mainWindow);
-		// });
-	}
 	ipcMain.handle("dialog", (e, title, content) => {
 		dialog.showErrorBox(title, content);
 	});
